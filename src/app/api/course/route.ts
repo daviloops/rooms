@@ -28,3 +28,9 @@ export async function POST(req: NextRequest) {
   return Response.json(data);
 };
 
+export async function GET() {
+  const data = await prisma.course.findMany();
+ 
+  return Response.json(data);
+};
+
