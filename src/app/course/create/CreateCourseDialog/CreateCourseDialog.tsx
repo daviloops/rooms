@@ -3,13 +3,13 @@
 import { useState } from 'react';
 
 import Box from "@mui/joy/Box";
-import CreateCourseForm from '@/app/course/create/CreateCourseForm';
-import CreateCourseSuccess from '@/app/course/create/CreateCourseSuccess';
+import CreateCourseForm from '@/app/course/create/CreateCourseDialog/CreateCourseForm';
+import CreateCourseSuccess from '@/app/course/create/CreateCourseDialog/CreateCourseSuccess';
 import type { Course } from '@/types';
 
 
 const CreateCourseDialog = () => {
-  const [formState, setFormState] = useState('success');
+  const [formState, setFormState] = useState('start');
   const [newCourse, setNewCourse] = useState<Course>();
 
   const onSuccess = ({ data }: { data: Course }) => {

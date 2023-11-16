@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import useSWR from 'swr';
-import { useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
-import Button from '@mui/joy/Button';
 
+import Button from '@mui/joy/Button';
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
 import fetcher from '@/utils/fetcher';
@@ -49,8 +49,6 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
   const { data: dataStudents, error: errorStudents, isLoading: isLoadingStudents } = useSWR('/api/student', fetcher);
   
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const { enqueueSnackbar } = useSnackbar();
   
   const {
     control,
@@ -111,7 +109,7 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
     if (errorStudents) {
       enqueueSnackbar('Could not get students data', { variant: "error" });
     }
-  }, [errorStudents, enqueueSnackbar]);
+  }, [errorStudents]);
 
   return (
     <form onSubmit={onSubmit}>
