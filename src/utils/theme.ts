@@ -40,7 +40,6 @@ const theme = extendTheme({
     JoyButton: {
       defaultProps: {
         variant: "outlined",
-        loading: true,
       },
       styleOverrides: {
         root: ({ theme }) => ({

@@ -10,9 +10,9 @@ import { useSnackbar } from 'notistack';
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
+import Button from '@mui/joy/Button';
 
 import ControlledInput from '@/components/ControlledInput';
-import Button from '@/components/Button';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
 import fetcher from '@/utils/fetcher';
 

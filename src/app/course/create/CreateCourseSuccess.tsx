@@ -1,10 +1,11 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
-import Button from "@/components/Button";
+import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
 import SvgIcon from '@mui/joy/SvgIcon';
 
@@ -28,7 +29,13 @@ const CreateCourseSuccess = ({ newCourse, onRestart }: CreateCourseSuccessProps)
     <Stack spacing={8}>
       <Stack spacing={2} textAlign="center" pt={4}>
         <Box>
-          <SvgIcon component={SuccessIcon} sx={{ width: '7.5rem', height: '7.5rem' }} viewBox="0 0 120 120" />
+          <Image
+            priority
+            src={'/icons/success.svg'}
+            alt="Success"
+            width={120}
+            height={120}
+          />
         </Box>
         <Box width="100%" display="flex" justifyContent="center">
           <Typography maxWidth="20rem">The course {newCourse?.name || ''} was created successfully</Typography>
