@@ -9,7 +9,7 @@ import type { Course } from '@/types';
 
 
 const CreateCourseDialog = () => {
-  const [formState, setFormState] = useState('start');
+  const [formState, setFormState] = useState('success');
   const [newCourse, setNewCourse] = useState<Course>();
 
   const onSuccess = ({ data }: { data: Course }) => {

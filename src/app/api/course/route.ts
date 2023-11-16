@@ -1,6 +1,8 @@
+import { type NextRequest } from 'next/server';
+
 import prisma from "@/db/db";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const {
     name,
     classroom,
