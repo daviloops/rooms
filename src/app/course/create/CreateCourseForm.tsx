@@ -164,15 +164,13 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
               name="students"
               control={control}
               errors={errors}
-              autocompleteProps={{
-                loading: isLoadingStudents,
-                multiple: true,
-                options: dataStudents || [],
-                placeholder: "Enter the students names...",
-                limitTags: 2,
-                getOptionLabel: (option: any) => option.name || '',
-                isOptionEqualToValue: (option: any, value: any) => option.id === value.id,
-              }}
+              loading={isLoadingStudents}
+              multiple
+              options={dataStudents || []}
+              placeholder="Enter the students names..."
+              limitTags={2}
+              getOptionLabel={(option: any) => option.name || ''}
+              isOptionEqualToValue={(option: any, value: any) => option.id === value.id}
             />
           </Stack>
           <Box textAlign="center">

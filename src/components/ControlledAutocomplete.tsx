@@ -9,13 +9,12 @@ import Autocomplete, { AutocompleteProps as JoyAutocompleteProps } from '@mui/jo
 import CircularProgress from '@mui/joy/CircularProgress';
 
 type T = string | object
-type Multiple = boolean | undefined
-type DisableClearable = boolean | undefined
-type FreeSolo = boolean | undefined
+type Multiple = boolean
+type DisableClearable = boolean
+type FreeSolo = boolean
 
-export interface AutocompleteProps {
+export interface AutocompleteProps extends JoyAutocompleteProps<T, Multiple,  DisableClearable,  FreeSolo>{
   label?: string
-  autocompleteProps?: JoyAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
 };
 
 export interface ControlledAutocompleteProps extends AutocompleteProps {
@@ -30,7 +29,7 @@ const ControlledAutocomplete = (props: ControlledAutocompleteProps) => {
     control,
     name = "",
     label = "",
-    autocompleteProps,
+    loading,
     ...rest
   } = props;
 
@@ -44,7 +43,7 @@ const ControlledAutocomplete = (props: ControlledAutocompleteProps) => {
           <Autocomplete
             {...field}
             endDecorator={
-              autocompleteProps?.loading ? (
+              loading ? (
                 <CircularProgress
                   color="neutral"
                   size="sm"
@@ -56,8 +55,7 @@ const ControlledAutocomplete = (props: ControlledAutocompleteProps) => {
             }
             value={value}
             onChange={(_, data) => onChange(data)}
-            placeholder={autocompleteProps?.placeholder}
-            {...autocompleteProps}
+            {...rest}
           />
         )}
       />
