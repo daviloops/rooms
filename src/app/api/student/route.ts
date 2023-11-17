@@ -1,4 +1,4 @@
-import prisma from "@/db/db";
+import prisma from "@/db";
 
 export async function GET() {
   const data = await prisma.student.findMany();

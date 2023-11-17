@@ -7,11 +7,8 @@ import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
-import SvgIcon from '@mui/joy/SvgIcon';
 
 import type { Course } from '@/types';
-
-import SuccessIcon from '../../../../public/icons/success.svg';
 
 interface CreateCourseSuccessProps {
   newCourse: Course | undefined

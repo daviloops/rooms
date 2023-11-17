@@ -1,3 +1,8 @@
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const get = (url: string) => fetch(url).then((res) => res.json());
 
-export default fetcher;
+const getById = ([url, id]: [url: string, id: string]) => fetch(`${url}/${id}`).then((res) => res.json());
+
+export {
+  get,
+  getById,
+};

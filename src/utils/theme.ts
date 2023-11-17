@@ -57,6 +57,28 @@ const theme = extendTheme({
         }),
       },
     },
+    JoyTable: {
+      styleOverrides: {
+        root: {
+          color: '#FFF',
+          
+          '& tr th': {
+            backgroundColor: 'inherit',
+            color: '#FFF',
+          },
+        },
+      },
+    },
+    JoyIconButton: {
+      styleOverrides: {
+        root: {
+          '&[aria-pressed="true"]': {
+            backgroundColor: 'inherit',
+            color: '#000',
+          }
+        },
+      },
+    },
   },
 });
 
