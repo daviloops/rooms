@@ -14,7 +14,7 @@ import Typography from "@mui/joy/Typography";
 import Button from '@mui/joy/Button';
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
-import fetcher from '@/utils/fetcher';
+import { get } from '@/utils/fetcher';
 
 import type { Student } from '@/types';
 
@@ -46,7 +46,7 @@ const validationSchema = yup.object().shape({
 });
 
 const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
-  const { data: dataStudents, error: errorStudents, isLoading: isLoadingStudents } = useSWR('/api/student', fetcher);
+  const { data: dataStudents, error: errorStudents, isLoading: isLoadingStudents } = useSWR('/api/student', get);
   
   const [isLoading, setIsLoading] = useState<boolean>(false);
   

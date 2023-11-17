@@ -29,7 +29,7 @@ export default function RootLayout({
           component="main"
           p={4}
           width="100%"
-          height="calc(100% - 66.4px)"
+          minHeight="calc(100% - 66.4px)"
         >
           {children}
         </Box>
