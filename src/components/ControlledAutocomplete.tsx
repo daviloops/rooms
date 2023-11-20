@@ -3,7 +3,7 @@
 import { Controller } from "react-hook-form";
 
 import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
+import FormLabel, { FormLabelProps } from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
 import Autocomplete, { AutocompleteProps as JoyAutocompleteProps } from '@mui/joy/Autocomplete';
 import CircularProgress from '@mui/joy/CircularProgress';
@@ -15,6 +15,7 @@ type FreeSolo = boolean
 
 export interface AutocompleteProps extends JoyAutocompleteProps<T, Multiple,  DisableClearable,  FreeSolo>{
   label?: string
+  labelProps?: FormLabelProps
 };
 
 export interface ControlledAutocompleteProps extends AutocompleteProps {
@@ -30,12 +31,13 @@ const ControlledAutocomplete = (props: ControlledAutocompleteProps) => {
     name = "",
     label = "",
     loading,
+    labelProps,
     ...rest
   } = props;
 
   return (
     <FormControl error={!!errors[name]}>
-      {label && <FormLabel>{label}</FormLabel>}
+      {label && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Controller
         name={name}
         control={control}

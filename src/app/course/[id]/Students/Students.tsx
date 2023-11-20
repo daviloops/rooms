@@ -25,10 +25,14 @@ import type { Student } from "@/types";
 const Students = ({ loading, data }: { loading: boolean, data: Array<Student> }) => {
   const [tabValue, setTabValue] = useState<string | null>('gallery');
 
+  
+  const storeVal = store.get('studentsView');
+
   useEffect(() => {
-    const val = store.get('studentsView');
-    setTabValue(val);
-  }, []);
+    if (storeVal !== tabValue) {
+      setTabValue(storeVal);
+    }
+  }, [storeVal]);
   
   const TabButton = styled(IconButton)(({ theme }) => ({
     '&:hover': {

@@ -19,7 +19,7 @@ const StudentsTable = ({ loading, data }: { loading: boolean, data: Array<Studen
         </tr>
       </thead>
       <tbody>
-        {(loading ? [...Array(8)] : data)?.map((item: Student, index: number) => (
+        {(loading ? [...Array(7)] : data)?.map((item: Student, index: number) => (
           <tr key={loading ? index : item.id}>
             <td>
               <Stack direction="row" alignItems="center" spacing={1}>

@@ -22,7 +22,7 @@ const Courses = ({ loading, data }: { loading: boolean, data: Array<Course> }) =
             onClick={!loading ? () => goProfile(item.id) : undefined}
             sx={{
               height: '100%',
-              width: '17rem',
+              width: '15rem',
               display: 'flex',
               alignItems: 'center',
               flexDirection: 'column',
@@ -45,14 +45,19 @@ const Courses = ({ loading, data }: { loading: boolean, data: Array<Course> }) =
               },
             }}
           >
-            <Typography fontSize="2rem" sx={{ wordBreak: 'break-all' }}>
+            <Typography fontSize="1.25rem">
               <Skeleton loading={loading}>
-                {loading ? '101' : item.classroom}
+                {loading ? 'Calculus III' : item.name}
               </Skeleton>
             </Typography>
-            <Typography fontSize="1.5rem" sx={{ wordBreak: 'break-all' }}>
+            <Typography fontSize="1rem">
               <Skeleton loading={loading}>
-                {loading ? 'Heisenberg' : item.name}
+                {loading ? 'Heisenberg' : item.teacher}
+              </Skeleton>
+            </Typography>
+            <Typography fontSize="1rem">
+              <Skeleton loading={loading}>
+                {loading ? '101' : item.classroom}
               </Skeleton>
             </Typography>
           </Box>

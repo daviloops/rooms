@@ -64,7 +64,7 @@ export default function CourseDetails({ params }: { params: { id: string }}) {
           <h4>Capacity</h4>
           <AttributeValue>
             <Skeleton loading={isLoading}>
-              {isLoading ? '11/30' : `${data?.students?.length || '-'}/${data?.capacity}`}
+              {isLoading ? '11/30' : `${data?.students?.length}/${data?.capacity}`}
             </Skeleton>
           </AttributeValue>
         </Attribute>

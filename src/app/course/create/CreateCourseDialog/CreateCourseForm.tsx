@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import useSWR from 'swr';
 import { enqueueSnackbar } from 'notistack';
+import useSWR from 'swr';
 
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
-
 import Button from '@mui/joy/Button';
+
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
 import { get } from '@/utils/fetcher';
@@ -46,7 +46,11 @@ const validationSchema = yup.object().shape({
 });
 
 const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
-  const { data: dataStudents, error: errorStudents, isLoading: isLoadingStudents } = useSWR('/api/student', get);
+  const {
+    data: dataStudents,
+    error: errorStudents,
+    isLoading: isLoadingStudents
+  } = useSWR('/api/student', get);
   
   const [isLoading, setIsLoading] = useState<boolean>(false);
   
@@ -69,6 +73,7 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
   const { course, classroom, capacity, teacher, students } = watch();
 
   const onSubmit = handleSubmit(async (e) => {
+    console.log({e})
     const studentsIds = students.map(item => ({ id: item.id }));
 
     const payload = {
@@ -112,9 +117,11 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
   }, [errorStudents]);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} noValidate>
       <Stack spacing={2} maxWidth="22.5rem" sx={{ margin: 'auto' }}>
-        <Typography component="h3" fontSize="1.25rem" textAlign="center">New course</Typography>
+        <Typography component="h3" fontSize="1.25rem" textAlign="center">
+          New course
+        </Typography>
         
         <Stack spacing={3}>
           <Stack spacing={1}>
@@ -141,8 +148,8 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
                 <ControlledInput
                   label="Capacity"
                   name="capacity"
+                  placeholder="33"
                   type="number"
-                  
                   control={control}
                   errors={errors}
                   required
@@ -160,6 +167,7 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
             <ControlledAutocomplete
               label="Students"
               name="students"
+              disableCloseOnSelect
               control={control}
               errors={errors}
               loading={isLoadingStudents}
@@ -172,10 +180,7 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
             />
           </Stack>
           <Box textAlign="center">
-            <Button
-              loading={isLoading}
-              type="submit"
-            >
+            <Button loading={isLoading} type="submit">
               Create
             </Button>
           </Box>
