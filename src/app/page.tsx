@@ -7,10 +7,10 @@ import { enqueueSnackbar } from 'notistack';
 
 import Box from '@mui/joy/Box';
 import Stack from '@mui/joy/Stack';
+import Typography from '@mui/joy/Typography';
 
 import AddButton from '@/components/AddButton';
 import Courses from '@/app/Courses';
-
 import { get } from '@/utils/fetcher';
 
 export default function Home() {
@@ -27,6 +27,7 @@ export default function Home() {
 
   return (
     <Stack direction="column" gap={4} display="flex" justifyContent="center">
+      <Typography component="h1" textAlign="center" fontSize="1.5rem" fontWeight="600">Courses</Typography>
       <Box textAlign="end">
         <AddButton onClick={goCreateCourse} />
       </Box>

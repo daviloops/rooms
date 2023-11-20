@@ -79,6 +79,13 @@ const theme = extendTheme({
         },
       },
     },
+    JoyLink: {
+      styleOverrides: {
+        root: {
+          color: '#FFF',
+        },
+      },
+    },
   },
 });
 

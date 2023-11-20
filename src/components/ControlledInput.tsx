@@ -4,12 +4,13 @@ import { Controller } from "react-hook-form";
 
 import Input, { InputProps as JoyInputProps } from "@mui/joy/Input";
 import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
+import FormLabel, { FormLabelProps } from "@mui/joy/FormLabel";
 import FormHelperText from "@mui/joy/FormHelperText";
 
 export interface InputProps extends JoyInputProps {
   label?: string
   required?: boolean
+  labelProps?: FormLabelProps
 };
 
 export interface ControlledInputProps extends InputProps {
@@ -27,12 +28,13 @@ const ControlledInput = (props: ControlledInputProps) => {
     name = "",
     label = "",
     required = false,
+    labelProps,
     ...rest
   } = props;
 
   return (
     <FormControl error={!!errors[name]} required={required}>
-      {label && <FormLabel>{label}</FormLabel>}
+      {label && <FormLabel {...labelProps}>{label}</FormLabel>}
       <Controller
         name={name}
         control={control}

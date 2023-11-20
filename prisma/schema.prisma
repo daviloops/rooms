@@ -11,12 +11,12 @@ datasource db {
 }
 
 model Student {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String
-  age Int
-  gender String
-  courses Course[]
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  name      String
+  age       Int
+  gender    String?
+  courses   Course[]
 }
 
 model Course {
