@@ -11,6 +11,7 @@ import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
 
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
@@ -118,23 +119,25 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
 
   return (
     <form onSubmit={onSubmit} noValidate>
-      <Stack spacing={2} maxWidth="22.5rem" sx={{ margin: 'auto' }}>
+      <Stack gap={2} maxWidth="22.5rem" sx={{ margin: 'auto' }}>
         <Typography component="h3" fontSize="1.25rem" textAlign="center">
           New course
         </Typography>
         
-        <Stack spacing={3}>
-          <Stack spacing={1}>
-            <ControlledInput
-              label="Course"
-              name="course"
-              placeholder="Biology II"
-              control={control}
-              errors={errors}
-              required
-            />
-            <Stack spacing={3} direction="row">
-              <Box width="100%">
+        <Stack gap={3}>
+          <Grid container gap={1} xs={12}>
+            <Grid xs={12}>
+              <ControlledInput
+                label="Course"
+                name="course"
+                placeholder="Biology II"
+                control={control}
+                errors={errors}
+                required
+              />
+            </Grid>
+            <Grid container gap={3} direction="row">
+              <Grid xs>
                 <ControlledInput
                   label="Classroom"
                   name="classroom"
@@ -143,8 +146,8 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
                   errors={errors}
                   required
                 />
-              </Box>
-              <Box maxWidth="5rem">
+              </Grid>
+              <Grid xs>
                 <ControlledInput
                   label="Capacity"
                   name="capacity"
@@ -154,31 +157,35 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
                   errors={errors}
                   required
                 />
-              </Box>
-            </Stack>
-            <ControlledInput
-              label="Teacher"
-              name="teacher"
-              placeholder="Socrates"
-              control={control}
-              errors={errors}
-              required
-            />
-            <ControlledAutocomplete
-              label="Students"
-              name="students"
-              disableCloseOnSelect
-              control={control}
-              errors={errors}
-              loading={isLoadingStudents}
-              multiple
-              options={dataStudents || []}
-              placeholder="Enter the students names..."
-              limitTags={2}
-              getOptionLabel={(option: any) => option.name || ''}
-              isOptionEqualToValue={(option: any, value: any) => option.id === value.id}
-            />
-          </Stack>
+              </Grid>
+            </Grid>
+            <Grid xs={12}>
+              <ControlledInput
+                label="Teacher"
+                name="teacher"
+                placeholder="Socrates"
+                control={control}
+                errors={errors}
+                required
+              />
+            </Grid>
+            <Grid xs={12}>
+              <ControlledAutocomplete
+                label="Students"
+                name="students"
+                disableCloseOnSelect
+                control={control}
+                errors={errors}
+                loading={isLoadingStudents}
+                multiple
+                options={dataStudents || []}
+                placeholder="Enter the students names..."
+                limitTags={2}
+                getOptionLabel={(option: any) => option.name || ''}
+                isOptionEqualToValue={(option: any, value: any) => option.id === value.id}
+              />
+            </Grid>
+          </Grid>
           <Box textAlign="center">
             <Button loading={isLoading} type="submit">
               Create

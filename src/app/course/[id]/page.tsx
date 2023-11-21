@@ -9,6 +9,7 @@ import Stack from "@mui/joy/Stack";
 import Skeleton from "@mui/joy/Skeleton";
 import { styled } from "@mui/joy/styles";
 import Typography from "@mui/joy/Typography";
+import Grid from "@mui/joy/Grid";
 
 import { getById } from "@/utils/fetcher";
 
@@ -24,8 +25,9 @@ export default function CourseDetails({ params }: { params: { id: string }}) {
   }, [error]);
 
   const Attribute = styled('div')({
-    maxWidth: '20rem',
+    margin: 'auto',
     padding: '1rem',
+    maxWidth: '20rem',
     textAlign: 'center',
   });
 
@@ -34,42 +36,50 @@ export default function CourseDetails({ params }: { params: { id: string }}) {
   });
 
   return (
-    <Stack spacing={4}>
-      <Stack spacing={8} direction="row" justifyContent="center">
-        <Attribute>
-          <h4>Course</h4>
-          <AttributeValue>
-            <Skeleton loading={isLoading}>
-              {isLoading ? 'Biology II' : data?.name}
-            </Skeleton>
-          </AttributeValue>
-        </Attribute>
-        <Attribute>
-          <h4>Teacher</h4>
-          <AttributeValue>
-            <Skeleton loading={isLoading}>
-              {isLoading ? 'Mr. Black' : data?.teacher}
-            </Skeleton>
-          </AttributeValue>
-        </Attribute>
-        <Attribute>
-          <h4>Classroom</h4>
-          <AttributeValue>
-            <Skeleton loading={isLoading}>
-              {isLoading ? '101' : data?.classroom}
-            </Skeleton>  
-          </AttributeValue>
-        </Attribute>
-        <Attribute>
-          <h4>Capacity</h4>
-          <AttributeValue>
-            <Skeleton loading={isLoading}>
-              {isLoading ? '11/30' : `${data?.students?.length}/${data?.capacity}`}
-            </Skeleton>
-          </AttributeValue>
-        </Attribute>
-      </Stack>
-      <Stack spacing={1} width="100%" maxWidth="60rem" alignSelf="center">
+    <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Grid container maxWidth="68rem" width="100%" alignSelf="center">
+        <Grid xs={6} md={3}>
+          <Attribute>
+            <h4>Course</h4>
+            <AttributeValue>
+              <Skeleton loading={isLoading}>
+                {isLoading ? 'Biology II' : data?.name}
+              </Skeleton>
+            </AttributeValue>
+          </Attribute>
+        </Grid>
+        <Grid xs={6} md={3} textAlign="center">
+          <Attribute>
+            <h4>Teacher</h4>
+            <AttributeValue>
+              <Skeleton loading={isLoading}>
+                {isLoading ? 'Mr. Black' : data?.teacher}
+              </Skeleton>
+            </AttributeValue>
+          </Attribute>
+        </Grid>
+        <Grid xs={6} md={3} textAlign="center">
+          <Attribute>
+            <h4>Classroom</h4>
+            <AttributeValue>
+              <Skeleton loading={isLoading}>
+                {isLoading ? '101' : data?.classroom}
+              </Skeleton>  
+            </AttributeValue>
+          </Attribute>
+        </Grid>
+        <Grid xs={6} md={3} textAlign="center">
+          <Attribute>
+            <h4>Capacity</h4>
+            <AttributeValue>
+              <Skeleton loading={isLoading}>
+                {isLoading ? '11/30' : `${data?.students?.length}/${data?.capacity}`}
+              </Skeleton>
+            </AttributeValue>
+          </Attribute>
+        </Grid>
+      </Grid>
+      <Stack gap={1}>
         <Box textAlign="center">
           <h4>Enrolled students</h4>
         </Box>
