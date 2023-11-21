@@ -41,7 +41,7 @@ const CreateCourseSuccess = ({ newCourse, onRestart }: CreateCourseSuccessProps)
           <Button onClick={handleGoToCourse}>Go to the course</Button>
         </Box>
       </Stack>
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" gap={2}>
         <Button onClick={handleCreateNew}>Create a new course</Button>
         <Button onClick={handleBrowseCourses}>Browse all courses</Button>
       </Stack>

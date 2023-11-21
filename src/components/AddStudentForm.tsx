@@ -9,8 +9,9 @@ import useSWR from 'swr';
 
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
-
 import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
+
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
 import { get } from '@/utils/fetcher';
@@ -121,27 +122,31 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
   return (
     <form onSubmit={onSubmit} noValidate>    
       <Stack spacing={3} maxWidth="22.5rem" sx={{ margin: 'auto', pt: 2 }}>
-        <Stack spacing={1}>
-          <ControlledInput
-            label="Name"
-            name="name"
-            placeholder="Pepe Xochitl"
-            control={control}
-            errors={errors}
-            required
-            labelProps={labelProps}
-          />
-          <ControlledInput
-            label="Email"
-            name="email"
-            placeholder="pepe@hotmail.com"
-            control={control}
-            errors={errors}
-            required
-            labelProps={labelProps}
-          />
-          <Stack spacing={3} direction="row" width="100%">
-            <Box maxWidth="8rem">
+        <Grid container gap={1}>
+          <Grid xs={12}>
+            <ControlledInput
+              label="Name"
+              name="name"
+              placeholder="Pepe Xochitl"
+              control={control}
+              errors={errors}
+              required
+              labelProps={labelProps}
+            />
+          </Grid>
+          <Grid xs={12}>
+            <ControlledInput
+              label="Email"
+              name="email"
+              placeholder="pepe@hotmail.com"
+              control={control}
+              errors={errors}
+              required
+              labelProps={labelProps}
+            />
+          </Grid>
+          <Grid container gap={3}>
+            <Grid xs>
               <ControlledInput
                 label="Age"
                 name="age"
@@ -152,8 +157,8 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
                 required
                 labelProps={labelProps}
               />
-            </Box>
-            <Box width="100%">
+            </Grid>
+            <Grid xs>
               <ControlledInput
                 label="Gender"
                 name="gender"
@@ -162,9 +167,9 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
                 errors={errors}
                 labelProps={labelProps}
               />
-            </Box>
-          </Stack>
-          <Box mr={1}>
+            </Grid>
+          </Grid>
+          <Grid xs={12}>
             <ControlledAutocomplete
               label="Courses"
               name="courses"
@@ -179,10 +184,9 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
               getOptionLabel={(option: any) => option.name || ''}
               isOptionEqualToValue={(option: any, value: any) => option.id === value.id}
               labelProps={labelProps}
-              sx={{ mr: '0.1px' }} // Fix mui autocomplete offset
             />
-          </Box>
-        </Stack>
+          </Grid>
+        </Grid>
         <Box textAlign="end">
           <Button
             loading={isLoading}

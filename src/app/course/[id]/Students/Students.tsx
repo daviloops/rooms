@@ -78,7 +78,7 @@ const Students = ({ loading, data }: { loading: boolean, data: Array<Student> })
           <AddButton />
         </Box> */}
       </Stack>
-
+      
       {tabValue === 'gallery' ? (
         <StudentsGallery loading={loading} data={data} />
       ) : (
