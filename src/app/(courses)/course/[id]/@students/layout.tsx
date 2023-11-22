@@ -32,9 +32,10 @@ const Layout = ({
   const storeVal = store.get('studentsView');
 
   useEffect(() => {
-    if (storeVal !== tabValue) {
+    if (storeVal && storeVal !== tabValue) {
       setTabValue(storeVal);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storeVal]);
   
   const TabButton = styled(IconButton)(({ theme }) => ({
