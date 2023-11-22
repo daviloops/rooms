@@ -1,14 +1,13 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { useRouter, usePathname } from "next/navigation";
 
 import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Link from '@mui/joy/Link';
 
-import CreateStudentModal from '@/app/CreateStudentModal/CreateStudentModal';
-
-const Header = () => {
+const Header = ({ createStudent }: { createStudent: ReactNode }) => {
   const router = useRouter();
   const pathname= usePathname();
 
@@ -40,7 +39,7 @@ const Header = () => {
           <Link onClick={goHome} underline={pathname === '/' ? 'always' : 'hover'}>Courses</Link>
         </Box>
         <Box>
-          <CreateStudentModal />
+          {createStudent}
         </Box>
       </Stack>
     </nav>

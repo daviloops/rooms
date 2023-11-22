@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -17,14 +18,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  createStudent,
 }: {
-  children: React.ReactNode
+  children: ReactNode,
+  createStudent: ReactNode
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
       <Providers>
-        <Header />
+        <Header createStudent={createStudent} />
         <Box
           component="main"
           p={4}
