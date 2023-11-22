@@ -1,3 +1,5 @@
+'use client';
+
 import Stack from "@mui/joy/Stack";
 import Avatar from "@mui/joy/Avatar";
 import Table from '@mui/joy/Table';
@@ -5,9 +7,12 @@ import Skeleton from "@mui/joy/Skeleton";
 import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
 
+import useCourse from "@/app/course/[id]/useCourse";
 import type { Student } from "@/types";
 
-const StudentsTable = ({ loading, data }: { loading: boolean, data: Array<Student> }) => {
+const StudentsTable = ({ courseId }: { courseId: string }) => {
+  const { data, isLoading } = useCourse({ id: courseId });
+
   return (
     <Box sx={{ overflowX: 'auto' }}>
       <Table aria-label="Students table" stickyHeader sx={{ minWidth:'40rem' }}>
@@ -21,43 +26,43 @@ const StudentsTable = ({ loading, data }: { loading: boolean, data: Array<Studen
           </tr>
         </thead>
         <tbody>
-          {(loading ? [...Array(7)] : data)?.map((item: Student, index: number) => (
-            <tr key={loading ? index : item.id}>
+          {(isLoading ? [...Array(7)] : data?.students)?.map((item: Student, index: number) => (
+            <tr key={isLoading ? index : item.id}>
               <td>
                 <Stack direction="row" alignItems="center" spacing={1}>
                   <Avatar size="sm" />
                   <Typography>
-                    <Skeleton loading={loading}>
-                      {loading ? 'Pepe Harrison' : item.name}
+                    <Skeleton loading={isLoading}>
+                      {isLoading ? 'Pepe Harrison' : item.name}
                     </Skeleton>
                   </Typography>
                 </Stack>
               </td>
               <td>
                 <Typography>
-                  <Skeleton loading={loading}>
-                    {loading ? '1123581321' : item.id}
+                  <Skeleton loading={isLoading}>
+                    {isLoading ? '1123581321' : item.id}
                   </Skeleton>
                 </Typography>
               </td>
               <td>
                 <Typography>
-                  <Skeleton loading={loading}>
-                    {loading ? 'pepe@hotmail.com' : item.email}
+                  <Skeleton loading={isLoading}>
+                    {isLoading ? 'pepe@hotmail.com' : item.email}
                   </Skeleton>
                 </Typography>
               </td>
               <td>
                 <Typography>
-                  <Skeleton loading={loading}>
-                    {loading ? '11' : item.age}
+                  <Skeleton loading={isLoading}>
+                    {isLoading ? '11' : item.age}
                   </Skeleton>
                 </Typography>
               </td>
               <td>
                 <Typography>
-                  <Skeleton loading={loading}>
-                    {loading ? 'Male' : item.gender}
+                  <Skeleton loading={isLoading}>
+                    {isLoading ? 'Male' : item.gender}
                   </Skeleton>
                 </Typography>
               </td>

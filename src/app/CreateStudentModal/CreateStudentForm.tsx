@@ -1,24 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { enqueueSnackbar } from 'notistack';
-import useSWR from 'swr';
 
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
 import Button from '@mui/joy/Button';
 import Grid from '@mui/joy/Grid';
+import { Theme } from '@mui/joy/styles';
 
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
-import { get } from '@/utils/fetcher';
-
+import useCourses from '@/app/Courses/useCourses';
 import type { Course } from "@/types";
-import { Theme } from '@mui/joy/styles';
-
 
 interface ICreateStudentFormData {
   name: string
@@ -48,9 +45,9 @@ const validationSchema = yup.object().shape({
 });
 
 const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
-  const { data: dataCourses, error: errorCourses, isLoading: isLoadingCourses } = useSWR('/api/course', get);
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { data: dataCourses, isLoading: isLoadingCourses } = useCourses();
 
   const {
     control,
@@ -95,23 +92,14 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
     .then((res) => res.json())
     .then((data) => {
       onSuccess({ data });
-      enqueueSnackbar('Student added successfully', { variant: "success" });
+      enqueueSnackbar('Student created successfully', { variant: "success" });
     })
     .catch((e) => {
-      enqueueSnackbar('Could not add student', { variant: "error" });
+      enqueueSnackbar('Could not create student', { variant: "error" });
       console.error(e);
     })
     .finally(() => setIsLoading(false));
-    
-    // Todo: mutate students
-    // mutate(['/api/student', { payload: coursesIds }]);
   });
-
-  useEffect(() => {
-    if (errorCourses) {
-      enqueueSnackbar('Could not get courses data', { variant: "error" });
-    }
-  }, [errorCourses]);
 
   const labelProps = {
     sx: {
@@ -206,7 +194,7 @@ const AddStudentForm = ({ onSuccess }: { onSuccess: Function }) => {
             })
             }
           >
-            Add
+            Create
           </Button>
         </Box>
       </Stack>

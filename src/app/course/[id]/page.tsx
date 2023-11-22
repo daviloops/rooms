@@ -1,9 +1,5 @@
 'use client';
 
-import { useEffect } from "react";
-import { enqueueSnackbar } from "notistack";
-import useSWR from "swr";
-
 import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Skeleton from "@mui/joy/Skeleton";
@@ -11,18 +7,11 @@ import { styled } from "@mui/joy/styles";
 import Typography from "@mui/joy/Typography";
 import Grid from "@mui/joy/Grid";
 
-import { getById } from "@/utils/fetcher";
-
 import Students from "@/app/course/[id]/Students/Students";
+import useCourse from "@/app/course/[id]/useCourse";
 
 export default function CourseDetails({ params }: { params: { id: string }}) {
-  const { data, isLoading, error } = useSWR(['/api/course', params.id], getById);
-
-  useEffect(() => {
-    if (error) {
-      enqueueSnackbar('Could not get course data', { variant: 'error' });
-    }
-  }, [error]);
+  const { data, isLoading } = useCourse({ id: params.id });
 
   const Attribute = styled('div')({
     margin: 'auto',
@@ -83,7 +72,7 @@ export default function CourseDetails({ params }: { params: { id: string }}) {
         <Box textAlign="center">
           <h4>Enrolled students</h4>
         </Box>
-        <Students loading={isLoading} data={data?.students} />
+        <Students courseId={params.id} />
       </Stack>
     </Stack>
   );

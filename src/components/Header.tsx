@@ -6,7 +6,7 @@ import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Link from '@mui/joy/Link';
 
-import AddStudentModal from '@/components/AddStudentModal';
+import CreateStudentModal from '@/app/CreateStudentModal/CreateStudentModal';
 
 const Header = () => {
   const router = useRouter();
@@ -34,13 +34,13 @@ const Header = () => {
           >
             🏫
           </Box>
-          <Box sx={{ fontSize: '1.25rem' }}>Smart School</Box>
+          <Box sx={{ fontSize: '1.25rem' }}>Schoolboard</Box>
         </Stack>
         <Box sx={{ textAlign: "end", flexGrow: 1 }}>
           <Link onClick={goHome} underline={pathname === '/' ? 'always' : 'hover'}>Courses</Link>
         </Box>
         <Box>
-          <AddStudentModal />
+          <CreateStudentModal />
         </Box>
       </Stack>
     </nav>

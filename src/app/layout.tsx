@@ -11,8 +11,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Smart school',
-  description: 'App system to manage courses, classrooms and students in a school',
+  title: 'Schoolboard',
+  description: 'App to manage courses, classrooms and students in a school',
 }
 
 export default function RootLayout({
@@ -22,9 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <header>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏫</text></svg>" />
-      </header>
       <body className={inter.className}>
       <Providers>
         <Header />

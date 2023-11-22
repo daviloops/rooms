@@ -1,28 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
-import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
+import IconButton from '@mui/joy/IconButton';
 import SvgIcon from '@mui/joy/SvgIcon';
 import Tooltip from '@mui/joy/Tooltip';
 
 import PlusIcon from '../../public/icons/plus.svg';
 import PlusFilledIcon from '../../public/icons/plusFilled.svg';
 
-const AddButton = (props: IconButtonProps) => {
+export interface AddButtonProps {
+  tooltipText: string,
+  onClick: MouseEventHandler<HTMLAnchorElement>
+}
+
+const AddButton = ({tooltipText, onClick, ...props }: AddButtonProps)  => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <Tooltip title="Create course" arrow>
+    <Tooltip title={tooltipText} arrow>
       <IconButton
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={onClick}
         sx={{
           borderRadius: '50%',
-
+          
           '&:hover': {
             backgroundColor: 'inherit',
           },

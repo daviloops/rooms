@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import useSWR from 'swr';
 import { enqueueSnackbar } from 'notistack';
 
 import Box from '@mui/joy/Box';
@@ -11,17 +10,11 @@ import Typography from '@mui/joy/Typography';
 
 import AddButton from '@/components/AddButton';
 import Courses from '@/app/Courses';
-import { get } from '@/utils/fetcher';
+import useCourses from '@/app/Courses/useCourses';
 
 export default function Home() {
-  const { data, error, isLoading } = useSWR('/api/course', get);
+  const { data, isLoading } = useCourses();
   const router = useRouter();
-
-  useEffect(() => {
-    if (error) {
-      enqueueSnackbar('Could not get courses', { variant: 'error' });
-    }
-  }, [error]);
 
   const goCreateCourse = () => router.push('/course/create');
 
@@ -29,7 +22,7 @@ export default function Home() {
     <Stack direction="column" gap={4} display="flex" justifyContent="center">
       <Typography component="h1" textAlign="center" fontSize="1.5rem" fontWeight="600">Courses</Typography>
       <Box textAlign="end">
-        <AddButton onClick={goCreateCourse} />
+        <AddButton tooltipText="Create course" onClick={goCreateCourse} />
       </Box>
       <Courses loading={isLoading} data={data} /> 
     </Stack>
