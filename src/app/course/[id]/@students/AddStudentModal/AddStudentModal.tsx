@@ -8,7 +8,7 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 
-import AddStudentForm from '@/app/course/[id]/Students/AddStudentModal/AddStudentForm';
+import AddStudentForm from '@/app/course/[id]/@students/AddStudentModal/AddStudentForm';
 import AddButton from '@/components/AddButton';
 
 const AddStudentModal = ({ courseId }: { courseId: string }) => {

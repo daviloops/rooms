@@ -9,8 +9,8 @@ import Skeleton from "@mui/joy/Skeleton";
 import useCourse from "@/app/course/[id]/useCourse";
 import type { Student } from "@/types";
 
-const GalleryView = ({ courseId }: { courseId: string }) => {
-  const { data, isLoading } = useCourse({ id: courseId });
+const GalleryView = ({ params }: { params: { id: string }}) => {
+  const { data, isLoading } = useCourse({ id: params.id });
 
   return (
     <Grid container spacing={3} justifyContent="center">

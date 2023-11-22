@@ -16,7 +16,7 @@ import ControlledAutocomplete from '@/components/ControlledAutocomplete';
 import type { Student } from "@/types";
 import { Theme } from '@mui/joy/styles';
 import useCourse from '@/app/course/[id]/useCourse';
-import useStudents from '@/app/course/[id]/Students/AddStudentModal/useStudents';
+import useStudents from '@/app/course/[id]/@students/AddStudentModal/useStudents';
 
 interface IAddStudentFormData {
   students: Array<Student>

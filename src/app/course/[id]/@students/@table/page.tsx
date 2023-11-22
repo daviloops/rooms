@@ -10,8 +10,8 @@ import Box from "@mui/joy/Box";
 import useCourse from "@/app/course/[id]/useCourse";
 import type { Student } from "@/types";
 
-const StudentsTable = ({ courseId }: { courseId: string }) => {
-  const { data, isLoading } = useCourse({ id: courseId });
+const StudentsTable = ({ params }: { params: { id: string }}) => {
+  const { data, isLoading } = useCourse({ id: params.id });
 
   return (
     <Box sx={{ overflowX: 'auto' }}>
