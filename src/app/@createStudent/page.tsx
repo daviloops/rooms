@@ -11,7 +11,7 @@ import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import Tooltip from '@mui/joy/Tooltip';
 
-import CreateStudentForm from '@/app/@createStudent/CreateStudentForm';
+import CreateStudentForm from '@/app/@createStudent/_components/CreateStudentForm';
 
 import CreateStudentIcon from '../../../public/icons/addStudent.svg';
 

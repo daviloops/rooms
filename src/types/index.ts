@@ -1,18 +1,4 @@
+import type { Course } from '@/app/(courses)/_types';
+import type { Student } from '@/app/(students)/_types';
 
-export type Student = {
-  id: number
-  name: string
-  email: string
-  age: number
-  gender: string
-}
-export type Course = {
-  id: number
-  name: string
-  classroom: string
-  capacity: number
-  teacher: string
-  description?: string
-  active: boolean
-  students: Array<Student> 
-}
+export type { Course, Student };
