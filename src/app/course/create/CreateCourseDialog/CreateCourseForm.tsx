@@ -14,7 +14,7 @@ import Grid from '@mui/joy/Grid';
 
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
-import useStudents from '@/app/course/[id]/@students/AddStudentModal/useStudents';
+import useStudents from '@/app/course/[id]/@students/@addStudent/useStudents';
 import useCourses from '@/app/Courses/useCourses';
 import type { Student } from '@/types';
 

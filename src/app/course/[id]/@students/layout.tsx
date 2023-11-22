@@ -23,11 +23,13 @@ const Layout = ({
   gallery,
   table,
   params,
+  addStudent,
 }: {
   children: ReactNode,
   gallery: ReactNode,
   table: ReactNode,
   params: { id: string },
+  addStudent: ReactNode,
 }) => {
   const [tabValue, setTabValue] = useState<string | null>('gallery');
 
@@ -61,7 +63,9 @@ const Layout = ({
 
   return (
     <Stack gap={1}>
-      {children}
+      <Box textAlign="center">
+        <h4>Enrolled students</h4>
+      </Box>
       <Stack spacing={1}>
         <Stack direction="row" justifyContent="space-between">
           <Box>
@@ -81,7 +85,7 @@ const Layout = ({
             </ToggleButtonGroup>
           </Box>
           <Box>
-            <AddStudentModal courseId={params.id} />
+            {addStudent}
           </Box>
         </Stack>
         

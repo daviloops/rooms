@@ -8,10 +8,10 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 
-import AddStudentForm from '@/app/course/[id]/@students/AddStudentModal/AddStudentForm';
+import AddStudentForm from '@/app/course/[id]/@students/@addStudent/AddStudentForm';
 import AddButton from '@/components/AddButton';
 
-const AddStudentModal = ({ courseId }: { courseId: string }) => {
+const AddStudentModal = ({ params }: { params: { id: string } }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const openDialog = () => setDialogOpen(true);
@@ -27,7 +27,7 @@ const AddStudentModal = ({ courseId }: { courseId: string }) => {
           <DialogTitle>Add student to the course</DialogTitle>
           <DialogContent>
             <ModalClose />
-            <AddStudentForm onSuccess={onSuccess} courseId={courseId} />
+            <AddStudentForm onSuccess={onSuccess} courseId={params.id} />
           </DialogContent>
         </ModalDialog>
       </Modal>
