@@ -11,8 +11,9 @@ import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import Tooltip from '@mui/joy/Tooltip';
 
-import AddStudentIcon from '../../public/icons/addStudent.svg';
-import AddStudentForm from './AddStudentForm';
+import CreateStudentForm from '@/app/CreateStudentModal/CreateStudentForm';
+
+import CreateStudentIcon from '../../../public/icons/addStudent.svg';
 
 const AddStudentButton = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -36,7 +37,7 @@ const AddStudentButton = () => {
           }}
         >
           <SvgIcon
-            component={AddStudentIcon}
+            component={CreateStudentIcon}
             viewBox="0 0 32 20"
             sx={{ height: '2rem', width: '2rem' }}
           />
@@ -47,7 +48,7 @@ const AddStudentButton = () => {
           <DialogTitle>Add new student to the system</DialogTitle>
           <DialogContent>
             <ModalClose />
-            <AddStudentForm onSuccess={onSuccess} />
+            <CreateStudentForm onSuccess={onSuccess} />
           </DialogContent>
         </ModalDialog>
       </Modal>

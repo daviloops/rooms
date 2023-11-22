@@ -11,7 +11,7 @@ import ToggleButtonGroup from '@mui/joy/ToggleButtonGroup';
 import IconButton from '@mui/joy/IconButton';
 import SvgIcon, { SvgIconProps } from '@mui/joy/SvgIcon';
 
-import AddButton from "@/components/AddButton";
+import AddStudentModal from "@/app/course/[id]/Students/AddStudentModal";
 import StudentsGallery from "@/app/course/[id]/Students/StudentsGallery";
 import StudentsTable from "@/app/course/[id]/Students/StudentsTable";
 
@@ -20,12 +20,9 @@ import AppsFilledIcon from '../../../../../public/icons/appsFilled.svg';
 import TableIcon from '../../../../../public/icons/table.svg';
 import TableFilledIcon from '../../../../../public/icons/tableFilled.svg';
 
-import type { Student } from "@/types";
-
-const Students = ({ loading, data }: { loading: boolean, data: Array<Student> }) => {
+const Students = ({ courseId }: { courseId: string }) => {
   const [tabValue, setTabValue] = useState<string | null>('gallery');
 
-  
   const storeVal = store.get('studentsView');
 
   useEffect(() => {
@@ -56,7 +53,7 @@ const Students = ({ loading, data }: { loading: boolean, data: Array<Student> })
 
   return (
     <Stack spacing={1}>
-      <Stack direction="row" justifyContent="flex-start">
+      <Stack direction="row" justifyContent="space-between">
         <Box>
           <ToggleButtonGroup
             value={tabValue}
@@ -73,16 +70,15 @@ const Students = ({ loading, data }: { loading: boolean, data: Array<Student> })
             </TabButton>
           </ToggleButtonGroup>
         </Box>
-        {/* // Todo: add student */}
-        {/* <Box>
-          <AddButton />
-        </Box> */}
+        <Box>
+          <AddStudentModal courseId={courseId} />
+        </Box>
       </Stack>
       
       {tabValue === 'gallery' ? (
-        <StudentsGallery loading={loading} data={data} />
+        <StudentsGallery courseId={courseId} />
       ) : (
-        <StudentsTable loading={loading} data={data} />
+        <StudentsTable courseId={courseId} />
       )}
     </Stack>
   );

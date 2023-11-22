@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { enqueueSnackbar } from 'notistack';
-import useSWR from 'swr';
 
 import Stack from "@mui/joy/Stack";
 import Box from "@mui/joy/Box";
@@ -15,9 +14,10 @@ import Grid from '@mui/joy/Grid';
 
 import ControlledInput from '@/components/ControlledInput';
 import ControlledAutocomplete from '@/components/ControlledAutocomplete';
-import { get } from '@/utils/fetcher';
-
+import useStudents from '@/app/course/[id]/Students/AddStudentModal/useStudents';
+import useCourses from '@/app/Courses/useCourses';
 import type { Student } from '@/types';
+
 
 interface ICreateCourseFormData {
   course: string
@@ -50,8 +50,9 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
   const {
     data: dataStudents,
     error: errorStudents,
-    isLoading: isLoadingStudents
-  } = useSWR('/api/student', get);
+    isLoading: isLoadingStudents,
+  } = useStudents();
+  const { data: coursesData, mutate } = useCourses();
   
   const [isLoading, setIsLoading] = useState<boolean>(false);
   
@@ -73,8 +74,7 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
   });
   const { course, classroom, capacity, teacher, students } = watch();
 
-  const onSubmit = handleSubmit(async (e) => {
-    console.log({e})
+  const onSubmit = handleSubmit(async () => {
     const studentsIds = students.map(item => ({ id: item.id }));
 
     const payload = {
@@ -100,6 +100,8 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
     .then((data) => {
       onSuccess({ data });
       enqueueSnackbar('Course created successfully', { variant: "success" });
+
+      mutate([ ...coursesData, { ...data } ]);
     })
     .catch((e) => {
       enqueueSnackbar('Could not create course', { variant: "error" });
@@ -107,8 +109,6 @@ const CreateCourseForm = ({ onSuccess }: { onSuccess: Function }) => {
     })
     .finally(() => setIsLoading(false));
     
-    // Todo: mutate courses
-    // mutate(['/api/course', { payload: studentsIds }]);
   });
 
   useEffect(() => {

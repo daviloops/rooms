@@ -16,3 +16,40 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
  
   return Response.json(data);
 }
+
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+  const id = params.id;
+
+  const {
+    name,
+    classroom,
+    capacity,
+    teacher,
+    description,
+    active,
+    students,
+  } = await req.json();
+
+  const data = await prisma.course.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      name,
+      classroom,
+      capacity,
+      teacher,
+      description,
+      active,
+      students: {
+        connect: students
+      },
+    },
+    include: {
+      students: true,
+    },
+  });
+  
+ 
+  return Response.json(data);
+}
