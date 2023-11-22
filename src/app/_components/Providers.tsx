@@ -5,7 +5,7 @@ import { SnackbarProvider } from 'notistack';
 
 import { CssVarsProvider } from '@mui/joy/styles';
 
-import theme from '@/app/(root)/theme';
+import theme from '@/styles/theme';
 
 const Providers = ({ children }: { children: ReactNode }) => {
   return (

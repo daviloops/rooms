@@ -4,10 +4,10 @@ import { Inter } from 'next/font/google';
 
 import { Box } from "@mui/joy";
 
-import Header from '@/app/(root)/_components/Header';
-import Providers from '@/app/(root)/_components/Providers';
+import Header from '@/app/_components/Header';
+import Providers from '@/app/_components/Providers';
 
-import './globals.css';
+import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
