@@ -7,7 +7,7 @@ import CreateCourseSuccess from '@/app/(courses)/course/create/_components/Creat
 import type { Course } from '@/types';
 
 export default function CourseCreate() {
-  const [formState, setFormState] = useState('success');
+  const [formState, setFormState] = useState('start');
   const [newCourse, setNewCourse] = useState<Course>();
 
   const onSuccess = ({ data }: { data: Course }) => {

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import Box from "@mui/joy/Box";
+
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <Box display="flex" justifyContent="center" width="100%">
