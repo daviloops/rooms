@@ -6,8 +6,9 @@ import { useRouter, usePathname } from "next/navigation";
 import Box from "@mui/joy/Box";
 import Stack from "@mui/joy/Stack";
 import Link from '@mui/joy/Link';
+import CreateStudentModal from '@/app/(students)/_components/CreateStudentModal';
 
-const Header = ({ createStudent }: { createStudent: ReactNode }) => {
+const Header = () => {
   const router = useRouter();
   const pathname= usePathname();
 
@@ -39,7 +40,7 @@ const Header = ({ createStudent }: { createStudent: ReactNode }) => {
           <Link onClick={goHome} underline={pathname === '/' ? 'always' : 'hover'}>Courses</Link>
         </Box>
         <Box>
-          {createStudent}
+          <CreateStudentModal />
         </Box>
       </Stack>
     </nav>

@@ -11,9 +11,9 @@ import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import Tooltip from '@mui/joy/Tooltip';
 
-import CreateStudentForm from '@/app/@createStudent/_components/CreateStudentForm';
+import CreateStudentForm from '@/app/(students)/_components/CreateStudentModal/CreateStudentForm';
 
-import CreateStudentIcon from '../../../public/icons/addStudent.svg';
+import CreateStudentIcon from '../../../../../public/icons/addStudent.svg';
 
 const CreateStudentModal = () => {
   const [dialogOpen, setDialogOpen] = useState(false);

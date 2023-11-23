@@ -17,18 +17,12 @@ export const metadata: Metadata = {
   description: 'App to manage courses, classrooms and students in a school',
 }
 
-export default function RootLayout({
-  children,
-  createStudent,
-}: {
-  children: ReactNode,
-  createStudent: ReactNode
-}) {
+export default function RootLayout({ children, }: { children: ReactNode, }) {
   return (
     <html lang="en">
       <body className={inter.className}>
       <Providers>
-        <Header createStudent={createStudent} />
+        <Header />
         <Box
           component="main"
           p={4}
