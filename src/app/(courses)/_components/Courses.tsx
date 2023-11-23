@@ -17,8 +17,8 @@ const Courses = () => {
   const goProfile = (id: number) => router.push(`/course/${id}`);
 
   return (
-    <Grid container spacing={3} justifyContent="center">
-      {(isLoading ? [...Array(6)] : data)?.map((item: Course, index: number) => (
+    <Grid container gap={3} justifyContent="center">
+      {(isLoading ? [...Array(10)] : data)?.map((item: Course, index: number) => (
         <Grid key={isLoading ? index : item.id}>
           <Box
             onClick={!isLoading ? () => goProfile(item.id) : undefined}

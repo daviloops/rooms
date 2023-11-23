@@ -26,7 +26,7 @@ const StudentsTable = ({ params }: { params: { id: string }}) => {
           </tr>
         </thead>
         <tbody>
-          {(isLoading ? [...Array(7)] : data?.students)?.map((item: Student, index: number) => (
+          {(isLoading ? [...Array(6)] : data?.students)?.map((item: Student, index: number) => (
             <tr key={isLoading ? index : item.id}>
               <td>
                 <Stack direction="row" alignItems="center" spacing={1}>
