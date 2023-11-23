@@ -6,10 +6,11 @@ import { Box } from "@mui/joy";
 
 import Header from '@/app/_components/Header';
 import Providers from '@/app/_components/Providers';
+import Background from '@/app/_components/Background';
 
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Schoolboard',
@@ -34,6 +35,7 @@ export default function RootLayout({
           width="100%"
           minHeight="calc(100% - 74.4px)"
         >
+          <Background />
           {children}
         </Box>
       </Providers>
