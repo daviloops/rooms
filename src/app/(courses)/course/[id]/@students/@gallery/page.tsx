@@ -14,7 +14,7 @@ const GalleryView = ({ params }: { params: { id: string }}) => {
 
   return (
     <Grid container spacing={3} justifyContent="center">
-      {(isLoading ? [...Array(4)] : data?.students)?.map((item: Student, index: number) => (
+      {(isLoading ? [...Array(6)] : data?.students)?.map((item: Student, index: number) => (
         <Grid key={isLoading ? index : item.id}>
           <Stack
             direction="row"
