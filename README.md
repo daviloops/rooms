@@ -80,4 +80,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-To deploy project on vercel set `npm run vercel-build` as build command, this will generate tables and create a migration deploy for prisma
+To deploy project on vercel set `npm run vercel-build` as build command in vercel app, this will generate tables and create a migration deploy for prisma
