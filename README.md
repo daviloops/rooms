@@ -2,7 +2,7 @@
 >*Every school needs a board*
 
 ## Description
-An EdTech web app desygned to help schools organize courses, classrooms and students.
+An EdTech web app designed to help schools organize courses, classrooms and students.
 |                                                                                                         |                                                                                                        |
 | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------|
 | ![image](https://github.com/daviloops/schoolboard/assets/63609685/2fb9d1a0-dc01-4156-971f-807458442371) | ![image](https://github.com/daviloops/schoolboard/assets/63609685/b12a403a-5690-4ab5-9231-b3380c184ff9) | 
@@ -13,8 +13,8 @@ The web app features
 - *Prisma* ORM to generate schemas for database.
 - API integration with *swr* and *fetch*.
 - Forms managed with *react-hook-form* and validated with yup.
-- Desygn system implemented with *Material UI Joy*.
-- *Responsive desygn* to adjust to different screen sizes.
+- Design system implemented with *Material UI Joy*.
+- *Responsive design* to adjust to different screen sizes.
 - *Notistack* to log notifications to user.
 - Wrote on *Typescript* for typing and a better dev experience.
 - Code analysis to keep a code pattern with *eslint*.
@@ -25,7 +25,7 @@ The web app features
 
 ## Resources
 ### UI
-- High fidelity desygn: [Figma desygn](https://www.figma.com/file/l5aEvax0D02wYWHR7yUYFA/%F0%9F%8F%AB-Schoolboard?type=design&node-id=0-1&mode=design)
+- High fidelity design: [Figma design](https://www.figma.com/file/l5aEvax0D02wYWHR7yUYFA/%F0%9F%8F%AB-Schoolboard?type=design&node-id=0-1&mode=design)
 ### Demo
 - Live demo: [Schoolboard demo (app)](https://schoolboard-gray.vercel.app/)
 - Video demo: [Schoolboard demo (video)](https://youtu.be/VcX1yORj98A)
